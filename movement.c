@@ -25,7 +25,6 @@ static void display_column (uint8_t row_pattern, uint8_t current_column)
     prev_column = current_column;   
 }
 
-/** Displays the maps to the lED screen */
 void display_map (uint8_t bitmap)
 {
     uint8_t current_column = 0;
@@ -57,9 +56,9 @@ void display_map (uint8_t bitmap)
     }
 }
 
-void navigation (map)
+void navigation (uint16_t map, uint16_t player_X, uint16_t player_Y)
 {
-    //TODO: select initial map
+    //TODO: use map select initial bitmap using player_X and player_Y coords
 
     system_init ();
     navswitch_init ();
