@@ -1,8 +1,13 @@
+#ifndef MOVEMENT_H
+#define MOVEMENT_H
+
 #include "system.h"
 #include "pio.h"
 #include "pacer.h"
 #include <stdint.h>
 #include <stdlib.h>
+
+#define PACER_RATE 500
 
 static uint8_t prev_column = 0;
 
@@ -24,4 +29,6 @@ static const pio_t cols[] =
 static void display_column (uint8_t row_pattern, uint8_t current_column);
 
 /** Displays the maps to the lED screen */
-void display_map (uint8_t bitmap)'
+void display_map (uint8_t bitmap)
+
+#endif //MOVEMENT_H

@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "movement.h"
+#include "navswitch.h"
+
 
 
 
@@ -53,4 +55,31 @@ void display_map (uint8_t bitmap)
             current_column = 0;
         }           
     }
+}
+
+void navigation (map)
+{
+    //TODO: select initial map
+
+    system_init ();
+    navswitch_init ();
+    pacer_init (PACER_RATE);
+
+    while(1)
+    {
+        pacer_wait ();
+        navswitch_update ();
+        
+        if (navswitch_push_event_p (NAVSWITCH_NORTH))
+            // TODO: change map NORTH
+        if (navswitch_push_event_p (NAVSWITCH_EAST))
+            // TODO: change map EAST
+        if (navswitch_push_event_p (NAVSWITCH_SOUTH))
+            // TODO: change map SOUTH
+        if (navswitch_push_event_p (NAVSWITCH_WEST))
+            // TODO: change map WEST
+        
+        display_map (map);
+    }
+    return 0;
 }
