@@ -36,6 +36,9 @@ void display_map (uint8_t bitmap);
 /* Checks whether player move is legal */
 bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y);
 
+/* Updates and displays the new map using coords */
+void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y);
+
 /* Allows the player to navigate around the map */
 void navigation (uint16_t map, uint16_t player_X, uint16_t player_Y);
 
