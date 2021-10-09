@@ -6,6 +6,7 @@
 #include "pacer.h"
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define PACER_RATE 500
 
@@ -31,6 +32,9 @@ static void display_column (uint8_t row_pattern, uint8_t current_column);
 
 /* Displays the maps to the lED screen */
 void display_map (uint8_t bitmap);
+
+/* Checks whether player move is legal */
+bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y);
 
 /* Allows the player to navigate around the map */
 void navigation (uint16_t map, uint16_t player_X, uint16_t player_Y);

@@ -14,23 +14,30 @@ Stats_t level_init(uint8_t level)
     maps_t maps = maps_init();
 
     // Initialise level statistics
-    Stats_t level_statisics;
-    // TODO Fix this level_statisics.map = maps.map
-    level_statisics.X = 3;
-    level_statisics.Y = 3;
-    level_statisics.playerHP = 2;
-    level_statisics.bossHP = 6;
+    Stats_t level_stats;
+    // TODO Fix this level_statisics.map = maps.map // TODO: select uint16_t map from maps using level
+    level_stats.X = 3;
+    level_stats.Y = 3;
+    level_stats.playerHP = 2;
+    level_stats.bossHP = 6;
     
-    // TODO: select uint16_t map from maps using level
+    return level_stats;
 }
 
 
-void play_level(maps_t maps) 
+void play_level(maps_t maps, Stats_t level_stats) 
 {
     
     while (1)
     {
-        navigation (map, player_X, player_Y);
+        // navigation
+        navigation (map, level_stats);
+
+        // scoring
+
+        // next level
+
+        //what happens if you die
     }
     
 }

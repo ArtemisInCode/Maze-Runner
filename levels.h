@@ -3,7 +3,7 @@
 
 //TODO: #include "maps.h"
 
-/* Player stats */
+/* Level stats */
 typedef struct {
     maps_t map; // Level map
     uint16_t X; // Player X ordinate
@@ -14,9 +14,10 @@ typedef struct {
 } Stats_t;
 
 
+/* Initialisation of level statistics */
+Stats_t level_init(uint8_t level);
 
-
-/* Initialisation and playing of each level */
+/* Playing of each level */
 void play_level(maps_t maps);
 
 

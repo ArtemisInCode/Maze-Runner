@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "movement.h"
 #include "navswitch.h"
+#include <stdbool.h>
 
 
 
@@ -41,8 +42,7 @@ void display_map (uint8_t bitmap)
         pio_config_set (cols[j], PIO_OUTPUT_HIGH);
     }
 
-    while (1)
-    {
+    while (1) {
         pacer_wait ();
         
         display_column (bitmap[current_column], current_column);
@@ -56,7 +56,16 @@ void display_map (uint8_t bitmap)
     }
 }
 
-void navigation (uint16_t map, uint16_t player_X, uint16_t player_Y)
+bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y)
+{
+    bool isLegal = true;
+    // TODO: check whether move would go into a wall
+    // Use map nums and check with bitshifting
+
+    return isLegal;
+}
+
+void navigation (uint16_t map, tats_t level_stats)
 {
     //TODO: use map select initial bitmap using player_X and player_Y coords
 
@@ -69,15 +78,20 @@ void navigation (uint16_t map, uint16_t player_X, uint16_t player_Y)
         pacer_wait ();
         navswitch_update ();
         
-        if (navswitch_push_event_p (NAVSWITCH_NORTH))
-            // TODO: change map NORTH
-        if (navswitch_push_event_p (NAVSWITCH_EAST))
-            // TODO: change map EAST
-        if (navswitch_push_event_p (NAVSWITCH_SOUTH))
-            // TODO: change map SOUTH
-        if (navswitch_push_event_p (NAVSWITCH_WEST))
-            // TODO: change map WEST
+        if ((navswitch_push_event_p (NAVSWITCH_NORTH)) && isLegalMove(map, level_stats.X, level_stats.Y+1))
+            level_stats.Y ++; // Change map NORTH
+
+        if ((navswitch_push_event_p (NAVSWITCH_EAST)) && isLegalMove(map, level_stats.X+1, level_stats.Y))
+            level_stats.X ++; // Change map EAST
+
+        if ((navswitch_push_event_p (NAVSWITCH_SOUTH)) && isLegalMove(map, level_stats.X, level_stats.Y-1))
+            level_stats.Y --; // Change map SOUTH
+
+        if ((navswitch_push_event_p (NAVSWITCH_WEST)) && isLegalMove(map, level_stats.X-1, level_stats.Y))
+            level_stats.X --; // Change map WEST
         
+        //TODO: update map using coords
+
         display_map (map);
     }
     return 0;
