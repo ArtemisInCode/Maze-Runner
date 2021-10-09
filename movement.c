@@ -65,6 +65,11 @@ bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y)
     return isLegal;
 }
 
+void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y)
+{
+    // Updates the map using coords - return map
+}
+
 void navigation (uint16_t map, tats_t level_stats)
 {
     //TODO: use map select initial bitmap using player_X and player_Y coords
