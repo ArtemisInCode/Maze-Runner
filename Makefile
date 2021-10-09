@@ -16,7 +16,7 @@ all: main.out
 
 
 # Compile: create object files from C source files.
-main.o: main.c ../../drivers/avr/system.h LedHeader.h ../../utils/pacer.h
+main.o: main.c ../../drivers/avr/system.h LedHeader.h maps.h ../../utils/pacer.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 system.o: ../../drivers/avr/system.c ../../drivers/avr/system.h
@@ -30,11 +30,24 @@ timer.o: ../../drivers/avr/timer.c ../../drivers/avr/system.h ../../drivers/avr/
 	
 pacer.o: ../../utils/pacer.c ../../drivers/avr/system.h ../../drivers/avr/timer.h ../../utils/pacer.h
 	$(CC) -c $(CFLAGS) $< -o $@
+	
+ledmat.o: ../../drivers/ledmat.c ../../drivers/ledmat.h  ../../drivers/avr/pio.h ../../drivers/avr/system.h
+	$(CC) -c $(CFLAGS) $< -o $@
+	
+maps.o: maps.c maps.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+levels.o: ../../drivers/avr/system.h ../../drivers/avr/pio.h ../../utils/pacer.h movement.h ../../drivers/navswitch.h levels.h maps.h
+	$(CC) -c $(CFLAGS) $< -o $@
+	
+movement.o: ../../drivers/avr/system.h ../../drivers/avr/pio.h ../../utils/pacer.h movement.h ../../drivers/navswitch.h ../../drivers/ledmat.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
 
 
 
 # Link: create ELF output file from object files.
-main.out: main.o system.o LedHeader.o pacer.o timer.o
+main.out: main.o system.o LedHeader.o pacer.o timer.o ledmat.o maps.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 	$(SIZE) $@
 
@@ -50,5 +63,4 @@ clean:
 program: main.out
 	$(OBJCOPY) -O ihex main.out main.hex
 	dfu-programmer atmega32u2 erase; dfu-programmer atmega32u2 flash main.hex; dfu-programmer atmega32u2 start
-
 
