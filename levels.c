@@ -6,6 +6,7 @@
 #include "movement.h"
 #include "navswitch.h"
 #include "levels.h"
+#include "collectables.h"
 //TODO: #include "maps.h"
 
 
@@ -14,28 +15,31 @@ Stats_t level_init(uint8_t level)
     maps_t maps = maps_init();
 
     // Initialise level statistics
-    Stats_t level_stats;
+    Stats_t levelStats;
+    levelStats.level = level;
     // TODO Fix this level_statisics.map = maps.map // TODO: select uint16_t map from maps using level
-    level_stats.X = 3;
-    level_stats.Y = 3;
-    level_stats.playerHP = 2;
-    level_stats.bossHP = 6;
+    levelStats.X = 2; // Coords start from top left corner (0,0)
+    levelStats.Y = 13;
+    levelStats.playerHP = 2;
+    levelStats.bossHP = 6;
     
-    return level_stats;
+    return levelStats;
 }
 
 
-void play_level(maps_t maps, Stats_t level_stats) 
+void play_level(maps_t maps, Stats_t levelStats) 
 {
     
     while (1)
     {
+        // Some sort of animation to indicate level start - just the level number displayed for a bit?
+
         // navigation
-        navigation (map, level_stats);
+        navigation (map, &levelStats); // idk, this needs to pass the pointer so it can be edited in lower levels
 
         // scoring
 
-        // next level
+        // next level - switch in main?
 
         //what happens if you die
     }

@@ -1,5 +1,0 @@
-#ifndef COLLECTABLE_H
-#define COLLECTABLE_H
-
-
-#endif //COLLECTABLE_H

@@ -5,6 +5,7 @@
 
 /* Level stats */
 typedef struct {
+    uint8_t level; // Level number
     maps_t map; // Level map
     uint16_t X; // Player X ordinate
     uint16_t Y; // Player Y ordinate
