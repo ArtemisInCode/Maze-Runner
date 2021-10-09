@@ -13,11 +13,13 @@
 Stats_t level_init(uint8_t level)
 {
     maps_t maps = maps_init();
+    map_collectables_t collectables = collectables_init();
 
     // Initialise level statistics
     Stats_t levelStats;
     levelStats.level = level;
     // TODO Fix this level_statisics.map = maps.map // TODO: select uint16_t map from maps using level
+    // TODO levelStats.collectables = the specific struct for the level
     levelStats.X = 2; // Coords start from top left corner (0,0)
     levelStats.Y = 13;
     levelStats.playerHP = 2;

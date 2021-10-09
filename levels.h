@@ -7,6 +7,7 @@
 typedef struct {
     uint8_t level; // Level number
     maps_t map; // Level map
+    map_collectables_t collectables; // Collectable coordinates
     uint16_t X; // Player X ordinate
     uint16_t Y; // Player Y ordinate
     uint8_t playerHP; // Player health
