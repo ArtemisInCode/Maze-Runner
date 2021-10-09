@@ -68,6 +68,10 @@ bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y)
 void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y)
 {
     // Updates the map using coords - return map
+    for(uint8_t i = (0 + player_X); i<(5 + player_Y); i++) {
+				col = (map[i] >> player_Y);
+				ledmat_display_column(col, i-player_X);
+			}
 }
 
 void navigation (uint16_t map, tats_t level_stats)
