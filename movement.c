@@ -22,10 +22,17 @@ bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y)
 void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y)
 {
     // Updates the map using coords - return map
-    for(uint8_t i = (0 + player_X); i<(5 + player_Y); i++) {
-				col = (map[i] >> player_Y);
-				ledmat_display_column(col, i-player_X);
-			}
+    for(uint8_t i = (0 + player_X); i<(5 + player_X); i++) {
+				if(i-2 >= 0 && i-2 <= 19 ) {
+					if(player_Y <= 3) {
+						col = ((maps.map3)[i-2] << (3-player_Y));
+					} else {
+						col = ((maps.map3)[i-2] >> player_Y);
+					}
+					ledmat_display_column(col, i-player_X);
+				} else {
+					ledmat_display_column(0x00, i-player_X);
+				}
 }
 
 void navigation (uint16_t map, Stats_t *levelStats)
