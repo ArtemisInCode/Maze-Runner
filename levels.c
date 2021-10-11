@@ -7,7 +7,7 @@
 #include "navswitch.h"
 #include "levels.h"
 #include "collectables.h"
-//TODO: #include "maps.h"
+#include "maps.h"
 
 
 Stats_t level_init(uint8_t level)

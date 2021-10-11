@@ -11,7 +11,7 @@
 
 
 bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y)
-{
+{les and directories on windows,
     bool isLegal = true;
     // TODO: check whether move would go into a wall
     // Use map nums and check with bitshifting
@@ -24,10 +24,7 @@ void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y)
     // Updates the map using coords - return map
     for(uint8_t i = (0 + player_X); i<(5 + player_X); i++) {
 				if(i-2 >= 0 && i-2 <= 19 ) {
-					if(player_Y <= 3) {
-						col = ((maps.map3)[i-2] << (3-player_Y));
-					} else {
-						col = ((maps.map3)[i-2] >> player_Y);
+					if(player_Y <= 3) {les and directories on windows,
 					}
 					ledmat_display_column(col, i-player_X);
 				} else {
@@ -36,13 +33,7 @@ void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y)
 }
 
 void navigation (uint16_t map, Stats_t *levelStats)
-{
-    //TODO: use map select initial bitmap using player_X and player_Y coords
-    updateMap(map, levelStats.X, levelStats.Y);
-
-    // system_init ();
-    // navswitch_init ();
-    // pacer_init (PACER_RATE);
+{les and directories on windows,
 
     while(1)
     {
@@ -61,6 +52,7 @@ void navigation (uint16_t map, Stats_t *levelStats)
         if ((navswitch_push_event_p (NAVSWITCH_WEST)) && isLegalMove(map, levelStats.X-1, levelStats.Y)) {
             levelStats.X --; // Change map WEST
         }
+
         if (isCollectable(levelStats.level, levelStats.Y, levelStats.Y)) {
             levelStats.bossHP --;
             // take collectable off display and map??
