@@ -2,6 +2,7 @@
 #define SCORING_H
 
 #include <stdint.h>
+#include"levels.h"
 
 
 /* Game score */

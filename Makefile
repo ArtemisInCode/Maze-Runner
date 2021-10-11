@@ -37,17 +37,24 @@ ledmat.o: ../../drivers/ledmat.c ../../drivers/ledmat.h  ../../drivers/avr/pio.h
 maps.o: maps.c maps.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
-levels.o: ../../drivers/avr/system.h ../../drivers/avr/pio.h ../../utils/pacer.h movement.h ../../drivers/navswitch.h levels.h maps.h
-	$(CC) -c $(CFLAGS) $< -o $@
+# levels.o: ../../drivers/avr/system.h ../../drivers/avr/pio.h ../../utils/pacer.h movement.h ../../drivers/navswitch.h levels.h maps.h
+# 	$(CC) -c $(CFLAGS) $< -o $@
 	
 movement.o: ../../drivers/avr/system.h ../../drivers/avr/pio.h ../../utils/pacer.h movement.h ../../drivers/navswitch.h ../../drivers/ledmat.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
+scoring.o: scoring.c scoring.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
+# ending.o: ending.c ending.h
+# 	$(CC) -c $(CFLAGS) $< -o $@
+
+levels.o: levels.c levels.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
 
 # Link: create ELF output file from object files.
-main.out: main.o system.o LedHeader.o pacer.o timer.o ledmat.o maps.o
+main.out: main.o system.o LedHeader.o pacer.o timer.o ledmat.o maps.o scoring.o  levels.o # ending.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 	$(SIZE) $@
 

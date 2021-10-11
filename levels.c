@@ -1,5 +1,6 @@
 #include <stdint.h>
 // #include <stdlib.h>
+#include "ledmat.h"
 #include "levels.h"
 #include "movement.h"
 #include "collectables.h"
@@ -12,8 +13,8 @@
 
 Stats_t level_init(uint8_t level)
 {
-    maps_t maps = maps_init();
-    map_collectables_t collectables = collectables_init();
+    Maps_t maps = maps_init();
+    Map_collectables_t collectables = collectables_init();
 
     // Initialise level statistics
     Stats_t levelStats;
@@ -36,10 +37,12 @@ void play_level(uint16_t map, Stats_t *levelStats)
     
     while (1)
     {
+
+        ledmat_display_column(1, 2);
         // Some sort of animation to indicate level start - just the level number displayed for a bit?
 
         // navigation
-        navigation (map, &levelStats); // idk, this needs to pass the pointer so it can be edited in lower levels
+        //navigation (map, &levelStats); // idk, this needs to pass the pointer so it can be edited in lower levels
 
         // scoring
 

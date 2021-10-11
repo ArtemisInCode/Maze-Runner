@@ -9,7 +9,7 @@
 #define PACER_RATE 500
 #define MESSAGE_RATE 10
 
-void printEnd(Score_t *score, Stats_t lvlStats)
+void gameEnd(Score_t *score, Stats_t lvlStats)
 {
     system_init();
 
@@ -20,7 +20,7 @@ void printEnd(Score_t *score, Stats_t lvlStats)
 
     scoreUpdate(score, lvlStats);
 
-    tinygl_text("Game over! Final score: %d", score->score);
+    tinygl_text("Game over! Final score:"); //  %d", score->score
 
     pacer_init (PACER_RATE);
 
