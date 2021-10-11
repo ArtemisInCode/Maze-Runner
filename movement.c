@@ -1,13 +1,14 @@
-#include "system.h"
-#include "pio.h"
-#include "pacer.h"
 #include <stdint.h>
 #include <stdlib.h>
-#include "movement.h"
+// #include <stdbool.h>
 #include "navswitch.h"
-#include <stdbool.h>
+#include "pacer.h"
 #include "ledmat.h"
 #include "collectables.h"
+#include "movement.h"
+
+// #include "system.h"
+// #include "pio.h"
 
 
 bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y)

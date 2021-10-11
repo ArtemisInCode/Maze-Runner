@@ -11,26 +11,26 @@ int main(void)
     // Initialisation here
     Maps_t maps = maps_init(); //Initialises all three level maps
     Map_collectables_t collectables = collectables_init(); // Initialises the maps for collectables
-    Stats_t level1Stats = level_init(uint8_t 1);
-    Stats_t level2Stats = level_init(uint8_t 2);
-    Stats_t level3Stats = level_init(uint8_t 3);
+    Stats_t level1Stats = level_init(1);
+    Stats_t level2Stats = level_init(2);
+    Stats_t level3Stats = level_init(3);
 
     
 
     // Gameplay here
 
     // Play level 1
-    play_level(maps.map1);
+    play_level(*maps.map1, &level1Stats);
 
     // TODO: check if dead
 
     // Play level 2
-    play_level(maps.map2);
+    play_level(*maps.map2, &level2Stats);
 
     // TODO: check if dead
 
     // Play level 3
-    play_level(maps.map3);
+    play_level(*maps.map3, &level3Stats);
 
     
 
