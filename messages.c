@@ -28,7 +28,7 @@ void gameEnd(Score_t *score, Stats_t lvlStats)
 {
     scoreUpdate(score, lvlStats);
 
-    char endStr = "Game over! Final score: " + score->score;
+    // char endStr =  + score->score;
 
     printText(endStr);
 }

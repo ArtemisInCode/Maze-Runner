@@ -5,7 +5,7 @@
 #include "pacer.h"
 #include "tinygl.h"
 #include "../fonts/font5x7_1.h"
-
+#include <stdio.h>
 #include"levels.h"
 #include"scoring.h"
 
