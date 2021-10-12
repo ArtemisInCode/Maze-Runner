@@ -18,6 +18,6 @@ bool isLegalMove (uint16_t map, uint16_t player_X, uint16_t player_Y);
 void updateMap(uint16_t map, uint16_t player_X, uint16_t player_Y);
 
 /* Allows the player to navigate around the map */
-void navigation (uint16_t map, uint16_t player_X, uint16_t player_Y);
+void navigation (uint16_t map, Stats_t *levelStats);
 
 #endif //MOVEMENT_H

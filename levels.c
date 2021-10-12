@@ -42,7 +42,7 @@ void play_level(uint16_t map, Stats_t *levelStats)
         // Some sort of animation to indicate level start - just the level number displayed for a bit?
 
         // navigation
-        //navigation (map, &levelStats); // idk, this needs to pass the pointer so it can be edited in lower levels
+        navigation (map, &levelStats); // idk, this needs to pass the pointer so it can be edited in lower levels
 
         // scoring
 

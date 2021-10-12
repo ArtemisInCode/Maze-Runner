@@ -5,7 +5,7 @@
 #include "maps.h"
 #include "levels.h"
 #include "scoring.h"
-#include "ending.h"
+#include "messages.h"
 
 /* The main funct for playing the game */
 int main(void)
@@ -13,35 +13,37 @@ int main(void)
     // Initialisation
     Maps_t maps = maps_init(); //Initialises all three level maps
     Map_collectables_t collectables = collectables_init(); // Initialises the maps for collectables
-    Score_t score = score_init();
-    Stats_t level1Stats = level_init(1);
-    Stats_t level2Stats = level_init(2);
-    Stats_t level3Stats = level_init(3);
     
+    while (1) {  
 
-    // Gameplay
+        Score_t score = score_init();
+        Stats_t level1Stats = level_init(1);
+        Stats_t level2Stats = level_init(2);
+        Stats_t level3Stats = level_init(3);  
+        printText("Start!");
 
-    // Play level 1
-    play_level(*maps.map1, &level1Stats);
+        // Gameplay
 
-    // Check if dead
-    if (level1Stats.isComplete) {
-        // Play level 2
-        play_level(*maps.map2, &level2Stats);
-    } else {
-        gameEnd(&score, level1Stats);
+        // Play level 1
+        printText("1");
+        play_level(*maps.map1, &level1Stats);
+
+        // Check if dead
+        if (level1Stats.isComplete) {
+            // Play level 2
+            printText("2");
+            play_level(*maps.map2, &level2Stats);
+        } else {
+            gameEnd(&score, level1Stats);
+        }
+
+        if (level2Stats.isComplete) {
+            // Play level 3
+            printText("3");
+            play_level(*maps.map3, &level3Stats);
+        } else {
+            gameEnd(&score, level2Stats);
+        }
+        gameEnd(&score, level3Stats);
     }
-
-    if (level2Stats.isComplete) {
-        // Play level 3
-        play_level(*maps.map3, &level3Stats);
-    } else {
-        gameEnd(&score, level2Stats);
-    }
-
-    gameEnd(&score, level3Stats);
-    
-    
-
-    // Ending and stats here
 }
