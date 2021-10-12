@@ -28,18 +28,18 @@ int main(void)
     if (level1Stats.isComplete) {
         // Play level 2
         play_level(*maps.map2, &level2Stats);
-    } /*else {
+    } else {
         gameEnd(&score, level1Stats);
-    } */
+    }
 
     if (level2Stats.isComplete) {
         // Play level 3
         play_level(*maps.map3, &level3Stats);
-    } /*else {
+    } else {
         gameEnd(&score, level2Stats);
-    } */
+    }
 
-    //gameEnd(&score, level3Stats);
+    gameEnd(&score, level3Stats);
     
     
 
