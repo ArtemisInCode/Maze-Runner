@@ -1,6 +1,6 @@
 # Group 222 ENCE260 Project
 
-A maze game run on a UCFK4 microcontroller.
+A timed maze game run on a UCFK4 microcontroller.
 
 ## Set up
 
