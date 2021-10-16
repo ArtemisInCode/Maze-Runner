@@ -1,3 +1,9 @@
+/** @file	movement.c
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  Player movement for gameplay
+*/
+
 #include "movement.h"
 
 bool is_legal_move(uint16_t map[], uint16_t player_X, uint16_t player_Y)

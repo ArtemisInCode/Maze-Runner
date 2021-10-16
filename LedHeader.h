@@ -1,3 +1,9 @@
+/** @file	LedHeader.h
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  Initialisation and set up of the LED matrix
+*/
+
 #ifndef LEDHEADER_H
 #define LEDHEADER_H
 

@@ -1,3 +1,9 @@
+/** @file	maps.h
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  Contains all structures to be initialised for gameplay
+*/
+
 #ifndef MAPS_H
 #define MAPS_H
 

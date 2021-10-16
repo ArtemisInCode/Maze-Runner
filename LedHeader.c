@@ -1,3 +1,9 @@
+/** @file	LedHeader.c
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  Initialisation and set up of the LED matrix
+*/
+
 #include "LedHeader.h"
 
 void header_init(void) // Initilises header for leds

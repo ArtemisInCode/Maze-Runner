@@ -1,3 +1,9 @@
+/** @file	messages.h
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  Support to print text to LED matrix
+*/
+
 #ifndef MESSAGES_H
 #define MESSAGES_H
 

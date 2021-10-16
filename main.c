@@ -1,3 +1,10 @@
+/** @file	main.c
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  The main file for playing the UC4FK game
+*/
+
+
 // Several of these are almost certainly redundant
 
 #include <avr/io.h>

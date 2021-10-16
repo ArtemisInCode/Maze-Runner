@@ -1,3 +1,8 @@
+/** @file	maps.c
+    @author A. Hingston, R. Beck
+    @date   19 Oct 2021
+    @brief  Contains all structures to be initialised for gameplay
+*/
 #include "maps.h"
 
 Stats_t level_init(uint16_t level[], uint16_t collectables[])
