@@ -16,7 +16,7 @@ all: main.out
 
 
 # Compile: create object files from C source files.
-main.o: main.c ../../drivers/avr/system.h LedHeader.h maps.h movement.h levels.h ../../utils/pacer.h 
+main.o: main.c ../../drivers/avr/system.h LedHeader.h maps.h movement.h ../../utils/pacer.h 
 	$(CC) -c $(CFLAGS) $< -o $@
 
 system.o: ../../drivers/avr/system.c ../../drivers/avr/system.h
@@ -36,11 +36,8 @@ ledmat.o: ../../drivers/ledmat.c ../../drivers/ledmat.h  ../../drivers/avr/pio.h
 	
 maps.o: maps.c maps.h
 	$(CC) -c $(CFLAGS) $< -o $@
-
-levels.o: levels.c ../../drivers/avr/system.h ../../drivers/avr/pio.h ../../utils/pacer.h movement.h ../../drivers/navswitch.h levels.h maps.h
-	$(CC) -c $(CFLAGS) $< -o $@
 	
-movement.o: movement.c ../../drivers/avr/system.h ../../drivers/avr/pio.h movement.h ../../drivers/navswitch.h ../../drivers/ledmat.h levels.h
+movement.o: movement.c ../../drivers/avr/system.h ../../drivers/avr/pio.h movement.h ../../drivers/navswitch.h ../../drivers/ledmat.h maps.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 navswitch.o: ../../drivers/navswitch.c ../../drivers/navswitch.h  ../../drivers/avr/pio.h ../../drivers/avr/system.h ../../drivers/avr/delay.h
@@ -51,7 +48,7 @@ navswitch.o: ../../drivers/navswitch.c ../../drivers/navswitch.h  ../../drivers/
 
 
 # Link: create ELF output file from object files.
-main.out: main.o system.o LedHeader.o pacer.o timer.o ledmat.o maps.o movement.o levels.o navswitch.o
+main.out: main.o system.o LedHeader.o pacer.o timer.o ledmat.o maps.o movement.o navswitch.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 	$(SIZE) $@
 
