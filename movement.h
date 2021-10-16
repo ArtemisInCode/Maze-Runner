@@ -3,7 +3,6 @@
 
 #include "system.h"
 #include "pio.h"
-#include "levels.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -17,5 +16,7 @@ void update_map(uint16_t collectables[], uint16_t map[], uint16_t player_X, uint
 
 /* Allows the player to navigate around the map */
 void movement_update(uint16_t map[], Stats_t* levelStats);
+
+void collectable_pickup(Stats_t* stats, uint16_t collectables[]);
 
 #endif //MOVEMENT_H

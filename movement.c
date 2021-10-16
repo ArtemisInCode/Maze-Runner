@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "navswitch.h"
 #include "ledmat.h"
+#include "maps.h"
 //#include "collectables.h"
 #include "movement.h"
 
@@ -17,6 +18,17 @@ bool is_legal_move(uint16_t map[], uint16_t player_X, uint16_t player_Y)
     bool isLegal = !((map[player_X]) & (1<<player_Y));
 
     return isLegal;
+}
+
+void collectable_pickup(Stats_t* stats, uint16_t collectables[]) {
+	
+	
+	bool isCollect = ((collectables[stats->X]) & (1<<(stats->Y)));
+	if(isCollect) {
+		stats->remainingCollectables--;
+		(collectables[stats->X]) &= ~(1<<(stats->Y));
+	}
+
 }
 
 void update_map(uint16_t collectables[], uint16_t map[], uint16_t player_X, uint16_t player_Y)

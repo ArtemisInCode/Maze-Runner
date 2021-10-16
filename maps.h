@@ -31,8 +31,19 @@ typedef struct {
 	
 } map_collectables_t;
 
+/* Level stats */
+typedef struct {
+    uint16_t level[20]; //Map
+    uint16_t collectables[20]; //Collectable Map
+    uint16_t X; // Player X ordinate
+    uint16_t Y; // Player Y ordinate
+    uint8_t remainingCollectables; // Boss health
+
+} Stats_t;
 
 
+/* Initialisation of level statistics */
+Stats_t level_init(uint16_t level[], uint16_t collectables[]);
 maps_t maps_init(void);
 map_collectables_t collectables_init(void);
 
