@@ -41,14 +41,20 @@ int main (void)
     {
     
 		if(stats.remainingCollectables == 0) {
-			level ++;
+			level = (level + 1) % 3;
 			map_get(level);
 			switch(level) {
+				case 1:
+				time = timer_get ();
+				//gameEnd(&time);
+					//printText("Play again!  1");
+					stats = level_init(map_get(1), collectables.map1);
+					break;
 				case 2:
 					//printText("2");
 					stats = level_init(map_get(2), collectables.map2);
 					break;
-				case 3:
+				case 0:
 					//printText("3");
 					stats = level_init(map_get(3), collectables.map3);
 					break;
@@ -89,7 +95,4 @@ int main (void)
 
 			
 		}
-		time = timer_get ();
-
-		gameEnd(&time);
 }
