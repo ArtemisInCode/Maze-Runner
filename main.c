@@ -6,12 +6,16 @@
 #include "pacer.h"
 #include "maps.h"
 #include "navswitch.h"
+#include "timer.h"
+#include "messages.h"
 
 #define PACER_RATE 500
 
 int main (void)
 {
+	timer_tick_t time;
     system_init ();
+	timer_init ();
     ledmat_init();
     pacer_init(PACER_RATE);;
     map_collectables_t collectables = collectables_init();
@@ -25,7 +29,7 @@ int main (void)
     
     
 
-
+	printText("1");
     while (1)
     {
     
@@ -34,9 +38,11 @@ int main (void)
 			map_get(level);
 			switch(level) {
 				case 2:
+					printText("2");
 					stats = level_init(map_get(2), collectables.map2);
 					break;
 				case 3:
+					printText("3");
 					stats = level_init(map_get(3), collectables.map3);
 					break;
 				default:
@@ -76,4 +82,7 @@ int main (void)
 
 			
 		}
+		time = timer_get ();
+
+		gameEnd(&time);
 }
