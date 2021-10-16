@@ -25,6 +25,7 @@ int main (void)
     uint16_t collectable_timer = 0;
 	timer_tick_t time;   
 
+	printText("Game start!");
 
     while (1)
     {

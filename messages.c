@@ -28,7 +28,7 @@ void gameEnd(timer_tick_t *time)
 {
     char endStr[40];
     double score = *time / 10;
-    sprintf(endStr, "Game over! Final score: %d", time);
+    sprintf(endStr, "Finished! Final score: %d", time);
 
     printText(endStr);
 }
