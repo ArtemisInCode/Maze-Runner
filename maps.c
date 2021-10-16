@@ -1,7 +1,21 @@
 #include <stdint.h>
 #include "maps.h"
 
+Stats_t level_init(uint16_t level[], uint16_t collectables[])
+{
 
+    // Initialise level statistics
+    Stats_t levelStats;
+    for(uint8_t i = 0; i<20; i++) {
+        levelStats.level[i] = level[i];
+    	levelStats.collectables[i] = collectables[i];
+	}
+    levelStats.X = 2; // Coords start from top left corner (0,0)
+    levelStats.Y = 13;
+    levelStats.remainingCollectables = 5;
+    
+    return levelStats;
+}
 
 maps_t maps_init(void)
 {
