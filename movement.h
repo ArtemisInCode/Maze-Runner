@@ -1,11 +1,17 @@
 #ifndef MOVEMENT_H
 #define MOVEMENT_H
 
-#include "system.h"
-#include "pio.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#include "system.h"
+#include "pio.h"
+#include "navswitch.h"
+#include "ledmat.h"
+#include "maps.h"
+
+
 
 
 /* Checks whether player move is legal */
