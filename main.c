@@ -39,7 +39,7 @@ int main (void)
 			switch(level) {
 				case 1:
 				time = timer_get ();
-				gameEnd(&time);
+				//gameEnd(&time);
 					//printText("Play again!  1");
 					stats = level_init(map_get(1), collectables.map1);
 					break;
