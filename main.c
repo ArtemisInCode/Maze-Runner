@@ -4,11 +4,15 @@
 #include "pacer.h"
 #include "maps.h"
 #include "navswitch.h"
+#include "timer.h"
+#include "messages.h"
 
 #define PACER_RATE 600
+#define TIMER_RATE 10
 
 int main (void)
 {
+	timer_init ();
     system_init ();
     ledmat_init();
     pacer_init(PACER_RATE);
@@ -19,8 +23,7 @@ int main (void)
     uint8_t map_timer = 0;
     uint8_t movement_timer = 0;
     uint16_t collectable_timer = 0;
-    
-    
+	timer_tick_t time;   
 
 
     while (1)
@@ -52,9 +55,8 @@ int main (void)
 		
 		ledmat_display_column(0x08, 2);
 		
-		
-	
-
-			
 		}
+
+	time = timer_get();
+	gameEnd(&time);
 }

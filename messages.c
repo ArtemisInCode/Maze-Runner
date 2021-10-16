@@ -24,12 +24,11 @@ void printText(char *message)
 
 
 
-void gameEnd(Score_t *score, Stats_t lvlStats)
+void gameEnd(timer_tick_t *time)
 {
-    scoreUpdate(score, lvlStats);
-
-    char endStr[40] 
-    sprintf(endStr, "Game over! Final score: %d", score->score);
+    char endStr[40];
+    double score = *time / 10;
+    sprintf(endStr, "Game over! Final score: %d", time);
 
     printText(endStr);
 }

@@ -16,6 +16,6 @@
 void printText(char *message);
 
 /* Message displays at end of game */
-void gameEnd(Score_t *score, Stats_t lvlStats);
+void gameEnd(timer_tick_t time));
 
 #endif // MESSAGES_H
