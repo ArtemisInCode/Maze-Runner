@@ -4,9 +4,8 @@
 #include "pacer.h"
 #include "maps.h"
 #include "navswitch.h"
-#include "levels.h"
 
-#define PACER_RATE 500
+#define PACER_RATE 600
 
 int main (void)
 {
@@ -15,7 +14,7 @@ int main (void)
     pacer_init(PACER_RATE);
     maps_t maps = maps_init();
     map_collectables_t collectables = collectables_init();
-    Stats_t stats = level_init(1);
+    Stats_t stats = level_init(maps.map1, collectables.map1);
     
     uint8_t map_timer = 0;
     uint8_t movement_timer = 0;
@@ -47,6 +46,7 @@ int main (void)
 	
 		if(movement_timer >= 10) {
 			movement_update(maps.map1, &stats);
+			collectable_pickup(&stats, collectables.map1);
 			movement_timer = 0;
 		}
 		
