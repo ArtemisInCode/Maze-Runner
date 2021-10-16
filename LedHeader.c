@@ -1,5 +1,3 @@
-#include <avr/io.h>
-#include "system.h"
 #include "LedHeader.h"
 
 void header_init(void) // Initilises header for leds

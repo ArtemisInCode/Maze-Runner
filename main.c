@@ -1,3 +1,5 @@
+// Several of these are almost certainly redundant
+
 #include <avr/io.h>
 #include "ledmat.h"
 #include "system.h"

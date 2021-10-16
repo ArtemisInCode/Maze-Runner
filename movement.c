@@ -1,15 +1,4 @@
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "navswitch.h"
-#include "ledmat.h"
-#include "maps.h"
-//#include "collectables.h"
 #include "movement.h"
-
-// #include "system.h"
-// #include "pio.h"
-
 
 bool is_legal_move(uint16_t map[], uint16_t player_X, uint16_t player_Y)
 {

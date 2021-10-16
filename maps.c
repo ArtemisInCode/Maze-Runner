@@ -1,4 +1,3 @@
-#include <stdint.h>
 #include "maps.h"
 
 Stats_t level_init(uint16_t level[], uint16_t collectables[])
