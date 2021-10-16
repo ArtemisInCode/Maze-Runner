@@ -29,7 +29,7 @@ int main (void)
     
     
 
-	printText("1");
+	//printText("1");
     while (1)
     {
     
@@ -38,11 +38,11 @@ int main (void)
 			map_get(level);
 			switch(level) {
 				case 2:
-					printText("2");
+					//printText("2");
 					stats = level_init(map_get(2), collectables.map2);
 					break;
 				case 3:
-					printText("3");
+					//printText("3");
 					stats = level_init(map_get(3), collectables.map3);
 					break;
 				default:
