@@ -10,20 +10,6 @@ typedef struct {
 } maps_t;
 
 typedef struct {
-	uint8_t x1;
-	uint8_t y1;
-	uint8_t x2;
-	uint8_t y2;
-	uint8_t x3;
-	uint8_t y3;
-	uint8_t x4;
-	uint8_t y4;
-	uint8_t x5;
-	uint8_t y5;
-
-} collectables_t;
-
-typedef struct {
 	uint16_t empty[20];
 	uint16_t map1[20];
 	uint16_t map2[20];
@@ -44,7 +30,7 @@ typedef struct {
 
 /* Initialisation of level statistics */
 Stats_t level_init(uint16_t level[], uint16_t collectables[]);
-maps_t maps_init(void);
+uint16_t* map_get(uint8_t level);
 map_collectables_t collectables_init(void);
 
 #endif
