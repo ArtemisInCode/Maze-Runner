@@ -29,7 +29,7 @@ The cathode of each LED is connected to ground(Top pin on header).
 
 ## Playing the game
 
-Use the navswitch to run around the maze and grab all the collectables (flashing dots) in the maze as fast as you can. There are three levels, and five collectables in each level. See how low you can get your score (NOTE: score is seconds x10).
+Use the navswitch to run around the maze and grab all the collectables (flashing dots) in the maze as fast as you can. There are three levels, and five collectables in each level. See how low you can get your score (NOTE: score is seconds x10). To replay the game, press the navswitch.
 
 ## Authors
 
