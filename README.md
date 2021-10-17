@@ -28,6 +28,6 @@ Use the navswitch to navigate around the maze and find all the collectables (fla
 
 ## Authors
 
-Artemis Hingston 83986198 irh20@uclive.ac.nz
+Artemis Hingston - 83986198 - irh20@uclive.ac.nz
 
-Robert Beck ******** rbe78@uclive.ac.nz
+Robert Beck - ******** - rbe78@uclive.ac.nz
