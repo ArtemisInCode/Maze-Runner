@@ -1,6 +1,6 @@
-# Group_222 ENCE260 Project
+# Group_222 ENCE260 Project - Maze Runner
 
-A timed maze game run on a UCFK4 microcontroller.
+A speed running maze game run on a UCFK4 microcontroller.
 
 ## Set up
 
@@ -24,7 +24,7 @@ $ make program
 
 ## Playing the game
 
-Use the navswitch to navigate around the maze and find all the collectables (flashing LED pixels) in the maze in the shortest time. There are three levels, and five collectables in each level.
+Use the navswitch to run around the maze and grab all the collectables (flashing LED pixels) in the maze as fast as you can. There are three levels, and five collectables in each level. See how low you can get your score (NOTE: score is seconds x10).
 
 ## Authors
 
