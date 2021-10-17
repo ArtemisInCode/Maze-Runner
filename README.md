@@ -22,6 +22,11 @@ Run the game using the make program command.
 $ make program
 ```
 
+External LEDs are needed to be connected to the UCFK4 to display remaining collectables.
+
+Each LED is connected in order, to the bottom five pins on the header through a 330ohm resistor to the LEDs anode(long leg).
+The cathode of each LED is connected to ground(Top pin on header).
+
 ## Playing the game
 
 Use the navswitch to run around the maze and grab all the collectables (flashing dots) in the maze as fast as you can. There are three levels, and five collectables in each level. See how low you can get your score (NOTE: score is seconds x10).
