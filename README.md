@@ -30,4 +30,4 @@ Use the navswitch to navigate around the maze and find all the collectables (fla
 
 Artemis Hingston - 83986198 - irh20@uclive.ac.nz
 
-Robert Beck - ******** - rbe78@uclive.ac.nz
+Robert Beck - 27223174 - rbe78@uclive.ac.nz
