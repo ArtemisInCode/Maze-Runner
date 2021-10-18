@@ -1,6 +1,6 @@
 # File:   Makefile
-# Author: M. P. Hayes, UCECE
-# Date:   12 Sep 2010
+# Author: A. Hingston, R. Beck
+# Date:   19 Oct 2021
 # Descr:  Makefile for game
 
 # Definitions.
@@ -16,13 +16,13 @@ all: main.out
 
 
 # Compile: create object files from C source files.
-main.o: main.c ../../drivers/avr/system.h LedHeader.h maps.h movement.h ../../utils/pacer.h numbers.h
+main.o: main.c ../../drivers/avr/system.h ledHeader.h maps.h movement.h ../../utils/pacer.h numbers.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 system.o: ../../drivers/avr/system.c ../../drivers/avr/system.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
-LedHeader.o: LedHeader.c LedHeader.h
+ledHeader.o: ledHeader.c ledHeader.h
 	$(CC) -c $(CFLAGS) $< -o $@
 	
 timer.o: ../../drivers/avr/timer.c ../../drivers/avr/system.h ../../drivers/avr/timer.h
@@ -51,7 +51,7 @@ numbers.o: numbers.c numbers.h ../../drivers/ledmat.h ../../utils/pacer.h
 
 
 # Link: create ELF output file from object files.
-main.out: main.o system.o LedHeader.o pacer.o timer.o ledmat.o maps.o movement.o navswitch.o numbers.o
+main.out: main.o system.o ledHeader.o pacer.o timer.o ledmat.o maps.o movement.o navswitch.o numbers.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 	$(SIZE) $@
 
