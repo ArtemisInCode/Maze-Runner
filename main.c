@@ -33,7 +33,7 @@ int main (void)
     Map_collectables_t collectables = collectables_init();
     Stats_t stats = level_init(map_get(1), collectables.map1);
     
-    uint8_t level = 1; //current game level
+	uint8_t level = 1; //current game level
     uint8_t game_state = 0; //0-Running, 1-EndScreen, 2-Reset 3-Interlevel
     
 	/*variables for counting cycles*/
