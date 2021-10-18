@@ -30,7 +30,7 @@ int main (void)
     system_init ();
     ledmat_init();
     pacer_init(PACER_RATE);;
-    map_collectables_t collectables = collectables_init();
+    Map_collectables_t collectables = collectables_init();
     Stats_t stats = level_init(map_get(1), collectables.map1);
     
     uint8_t level = 1; //current game level
