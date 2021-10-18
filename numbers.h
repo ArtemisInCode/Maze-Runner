@@ -15,4 +15,4 @@ void printNumbers(uint8_t number[], int8_t step);
 /* Generates bitmap to be printed by printNumbers from a number gives number length */
 uint8_t* createNumber(uint16_t number, uint8_t* numLen);
 
-#endif
+#endif // NUMBERS_H
