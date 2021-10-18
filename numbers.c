@@ -3,27 +3,22 @@
     @date   19 Oct 2021
     @brief  Creates and displays scrolling numbers 
 */
-#include "ledmat.h"
-#include "pacer.h"
-#include <stdint.h>
+
+#include "numbers.h"
 
 #define PACER_RATE 500
 
 
 void printNumbers (uint8_t number[], int8_t step)
 {
-
-			for (uint8_t i = 0; i<5; i++) { // Write to each display columnn
-				pacer_wait (); // Allow for physical switching time
-				if (i+step > 19 || i+step < 0) { // While in array bounds print number columns, 0x00 otherwise
-					ledmat_display_column (0x00, i);
-				} else {
-					ledmat_display_column (number[i+step], i);
-				}
-			}
-		
-		
-
+	for (uint8_t i = 0; i<5; i++) { // Write to each display columnn
+		pacer_wait (); // Allow for physical switching time
+		if (i+step > 19 || i+step < 0) { // While in array bounds print number columns, 0x00 otherwise
+			ledmat_display_column (0x00, i);
+		} else {
+			ledmat_display_column (number[i+step], i);
+		}
+	}
 }
 
 uint8_t* createNumber (uint16_t number, uint8_t* numLen)
@@ -63,9 +58,6 @@ uint8_t* createNumber (uint16_t number, uint8_t* numLen)
 		}
 		
 		number = number/10; // Removes first digit from number
-		
-	
-	
 	}
 	
 	*numLen = 5-count; // Writes amount of numbers to be printed
