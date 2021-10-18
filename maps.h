@@ -9,13 +9,6 @@
 
 #include <stdint.h>
 
-/* Structure containing level maps */
-typedef struct {
-	uint16_t map1[20];
-	uint16_t map2[20];
-	uint16_t map3[20];
-} Maps_t;
-
 /* Structure containing collectable level maps */
 typedef struct {
 	uint16_t empty[20];
