@@ -8,7 +8,7 @@
 #include "ledmat.h"
 #include "system.h"
 #include "pacer.h"
-#include "maps.h"
+#include "world.h"
 #include "navswitch.h"
 #include "numbers.h"
 #include "movement.h"

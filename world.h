@@ -4,8 +4,8 @@
     @brief  Contains all structures to be initialised for gameplay
 */
 
-#ifndef MAPS_H
-#define MAPS_H
+#ifndef WORLD_H
+#define WORLD_H
 
 #include <stdint.h>
 
@@ -36,4 +36,4 @@ uint16_t* map_get(uint8_t level);
 /* Initialises and returns collectable maps for all levels */
 Map_collectables_t collectables_init(void);
 
-#endif
+#endif // WORLD_H
