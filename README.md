@@ -24,7 +24,7 @@ Run the game using the make program command.
 $ make program
 ```
 
-External LEDs are needed to be connected to the UCFK4 to display remaining collectables.
+External LEDs are needed to be connected to the UCFK4 to display remaining collectables, but the game is playable without.
 
 Each LED is connected in order, to the bottom five pins on the header through a 330ohm resistor to the LEDs anode(long leg).
 The cathode of each LED is connected to ground(Top pin on header).
