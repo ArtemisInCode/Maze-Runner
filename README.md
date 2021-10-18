@@ -4,6 +4,8 @@ A speed running maze game run on a UCFK4 microcontroller.
 
 ## Set up
 
+Mount the UCFK4 to a usb port on the computer.
+
 First, navigate to the group_222 folder in the terminal.
 
 ```bash
