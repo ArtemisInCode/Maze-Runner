@@ -14,6 +14,8 @@
 #include "maps.h"
 #include "navswitch.h"
 #include "numbers.h"
+#include "movement.h"
+#include "LedHeader.h"
 
 #define PACER_RATE 500
 
@@ -28,7 +30,7 @@ int main (void)
     Stats_t stats = level_init(map_get(1), collectables.map1);
     
     uint8_t level = 1;
-    uint8_t game_state = 0; //0-Running, 1-EndScreen, 2-Reset
+    uint8_t game_state = 0; //0-Running, 1-EndScreen, 2-Reset 3-Interlevel
     
     uint8_t map_timer = 0;
     uint8_t movement_timer = 0;
@@ -40,11 +42,14 @@ int main (void)
     int8_t step = 21;
     uint8_t* numArray;
     uint16_t score = 0;
+	uint16_t levelNumber = 1;
 
     
     
 
 	//printText("1");
+	step = 13;
+	game_state = 3;
     while (1)
     {
     	pacer_wait();
@@ -53,19 +58,25 @@ int main (void)
     	case 0: //Running
 			if(stats.remainingCollectables == 0) {
 				level = (level + 1) % 3;
-				map_get(level);
 				switch(level) {
 					case 1:
-					game_state = 1;
+						game_state = 1;
+						levelNumber = 1;
 						//printText("Play again!  1");
 						stats = level_init(map_get(1), collectables.map1);
 						break;
 					case 2:
 						//printText("2");
+						levelNumber = 2;
+						step = 13;
+						game_state = 3;
 						stats = level_init(map_get(2), collectables.map2);
 						break;
 					case 0:
 						//printText("3");
+						levelNumber = 3;
+						step = 13;
+						game_state = 3;
 						stats = level_init(map_get(3), collectables.map3);
 						break;
 					default:
@@ -136,10 +147,29 @@ int main (void)
 			score = 0;
     		timer = 0;
     		step = 21;
-    		game_state = 0;
+    		levelNumber = 1;
+    		step = 13;
+			game_state = 3;
 			
-			break;			
-
+			break;
+		
+		case 3: //Interlevel			
+			
+			numArray = createNumber(levelNumber, &numLen);
+			
+			if(number_timer >= 50) {
+				step ++;
+				number_timer = 0;
+			}
+			if(step >= 21) {
+				game_state = 0;
+			}
+	 
+			printNumbers(numArray, step);
+			number_timer ++;
+			
+			break;
+			
 				
 		}
 	}
