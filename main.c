@@ -61,24 +61,21 @@ int main (void)
     	switch(game_state) {
     	
     	case 0: //Running
-			if(stats.remainingCollectables == 0) {
-				level = (level + 1) % 3;
+			if(stats.remainingCollectables == 0) { //updates map when no collectables left
+				level = (level + 1) % 3; //increments level
 				switch(level) {
-					case 1:
+					case 1: //reset game
 						game_state = 1;
 						levelNumber = 1;
-						//printText("Play again!  1");
 						stats = level_init(map_get(1), collectables.map1);
 						break;
-					case 2:
-						//printText("2");
+					case 2: //move to level 2
 						levelNumber = 2;
 						step = NUMBER_STEP_START;
 						game_state = 3;
 						stats = level_init(map_get(2), collectables.map2);
 						break;
-					case 0:
-						//printText("3");
+					case 0: //move to level 3
 						levelNumber = 3;
 						step = NUMBER_STEP_START;
 						game_state = 3;
@@ -90,11 +87,11 @@ int main (void)
 			}
 		
 			
-			if(map_timer >= MAP_TIMER_RATE) {
-				if(collectable_timer < COLLECTABLE_TIMER_RATE) {
+			if(map_timer >= MAP_TIMER_RATE) { //displays the map and collectables for current player position
+				if(collectable_timer < COLLECTABLE_TIMER_RATE) { //flashes collectables (ON)
 					update_map(stats.collectables, stats.level, stats.X, stats.Y);
 					map_timer = 0;
-				} else if(collectable_timer < (COLLECTABLE_TIMER_RATE*2)) {
+				} else if(collectable_timer < (COLLECTABLE_TIMER_RATE*2)) { //flashes collectables (OFF)
 					update_map(collectables.empty, stats.level, stats.X, stats.Y);
 					map_timer = 0;
 				} else {
@@ -104,43 +101,45 @@ int main (void)
 				}			
 			}
 			
+			/*increments timers*/
 			map_timer ++;
 			movement_timer ++;
 			collectable_timer ++;
+			timer++;
 		
-			if(movement_timer >= MOVEMENT_TIMER_RATE) {
+			if(movement_timer >= MOVEMENT_TIMER_RATE) { //updates postion from navstick input
 				movement_update(stats.level, &stats);
 				collectable_pickup(&stats, stats.collectables);
 				header_set(stats.remainingCollectables);
 				movement_timer = 0;
 			}
 			
-			timer++;
-			if(timer >= PACER_RATE/10) {
+			
+			if(timer >= PACER_RATE/10) { //increments score
 				timer = 0;
 				score ++;	
 			}
 			
-			ledmat_display_column(0x08, 2);
+			ledmat_display_column(0x08, 2); //displays player in centre
 			break;
 		
 		case 1: //EndScreen
 
-			numArray = createNumber(score, &numLen);
+			numArray = createNumber(score, &numLen); //generates bitmap for displaying score
 			
-			if(number_timer >= NUMBER_TIMER_RATE) {
+			if(number_timer >= NUMBER_TIMER_RATE) { //scrolls score
 				step ++;
 				number_timer = 0;
 			}
-			if(step >= 21) {
+			if(step >= 21) { //resets scrolling
 				step = 20 - (numLen*4) - 3;
 			}
 	 
-			printNumbers(numArray, step);
+			printNumbers(numArray, step); //displays score
 			number_timer ++;
 			
 			navswitch_update ();
-			if(navswitch_push_event_p(NAVSWITCH_PUSH)) {
+			if(navswitch_push_event_p(NAVSWITCH_PUSH)) { //resets game on navswitch push
 				game_state = 2;
 			}
 			break;
@@ -159,17 +158,17 @@ int main (void)
 		
 		case 3: //Interlevel			
 			
-			numArray = createNumber(levelNumber, &numLen);
+			numArray = createNumber(levelNumber, &numLen); //generates bitmap to display level number
 			
-			if(number_timer >= NUMBER_TIMER_RATE) {
+			if(number_timer >= NUMBER_TIMER_RATE) { //scrolls level number
 				step ++;
 				number_timer = 0;
 			}
-			if(step >= 21) {
+			if(step >= 21) { //starts next level at end of scroll
 				game_state = 0;
 			}
 	 
-			printNumbers(numArray, step);
+			printNumbers(numArray, step); //displays level number
 			number_timer ++;
 			
 			break;
