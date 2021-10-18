@@ -1,4 +1,4 @@
-/** @file	movement.c
+/** @file   movement.c
     @author A. Hingston, R. Beck
     @date   19 Oct 2021
     @brief  Player movement for gameplay
@@ -8,19 +8,18 @@
 
 bool is_legal_move(uint16_t map[], uint16_t player_X, uint16_t player_Y)
 {
-    // check whether move would go into a wall
-    // Use map nums and check with bitshifting
-    bool isLegal = !((map[player_X]) & (1<<player_Y));
+    bool isLegal = !((map[player_X]) & (1<<player_Y)); // Checks if the 'future' player position is '1' on the map. If 1, the move is legal
 
     return isLegal;
 }
 
 void collectable_pickup(Stats_t* stats, uint16_t collectables[]) 
 {		
-	bool isCollect = ((collectables[stats->X]) & (1<<(stats->Y)));
+	bool isCollect = ((collectables[stats->X]) & (1<<(stats->Y))); // Checks if the player position is '1' on the map. If 1, there is a collectable
+
 	if(isCollect) {
-		stats->remainingCollectables--;
-		(collectables[stats->X]) &= ~(1<<(stats->Y));
+		stats->remainingCollectables--; // Removes one collectable from remaining collectables
+		(collectables[stats->X]) &= ~(1<<(stats->Y)); // Removes the collectable from the map
 	}
 }
 
