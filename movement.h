@@ -30,7 +30,7 @@ void update_map(uint16_t collectables[], uint16_t map[], uint16_t player_X, uint
 /* Allows the player to navigate around the map */
 void movement_update(uint16_t map[], Stats_t* levelStats);
 
-/* 'Picks up' collectable when player moves over it - collisoin detection for collectables */
+/* 'Picks up' collectable when player moves over it - collision detection for collectables */
 void collectable_pickup(Stats_t* stats, uint16_t collectables[]);
 
 #endif //MOVEMENT_H
