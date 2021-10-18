@@ -1,4 +1,4 @@
-/** @file	movement.c
+/** @file   movement.c
     @author A. Hingston, R. Beck
     @date   19 Oct 2021
     @brief  Player movement for gameplay
