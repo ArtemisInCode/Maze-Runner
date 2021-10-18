@@ -23,6 +23,8 @@
 #define COLLECTABLE_TIMER_RATE 50
 #define NUMBER_TIMER_RATE 50
 
+#define MAX_NUMBER_LENGTH 20
+
 int main (void)
 {
 	/* Initilisation fucntions to setup game */
@@ -45,7 +47,7 @@ int main (void)
     
 	/* For number scrolling */
     uint8_t numLen = 0; // Length of string to print
-    int8_t step = 21; // Current print scrolling position
+    int8_t step = MAX_NUMBER_LENGTH + 1; // Current print scrolling position
     uint8_t* numArray; // Array of numbers to be printed
     uint16_t score = 0; // Final time
 	uint16_t levelNumber = 1; // Game level for printing
@@ -135,8 +137,8 @@ int main (void)
 				step ++;
 				number_timer = 0;
 			}
-			if(step >= 21) { // Resets scrolling
-				step = 20 - (numLen*4) - 3;
+			if(step >= (MAX_NUMBER_LENGTH + 1)) { // Resets scrolling
+				step = MAX_NUMBER_LENGTH - (numLen*4) - 3;
 			}
 	 
 			printNumbers(numArray, step); // Displays score
@@ -168,7 +170,7 @@ int main (void)
 				step ++;
 				number_timer = 0;
 			}
-			if(step >= 21) { // Starts next level at end of scroll
+			if(step >= (MAX_NUMBER_LENGTH + 1)) { // Starts next level at end of scroll
 				game_state = 0;
 			}
 	 
