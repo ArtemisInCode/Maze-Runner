@@ -44,6 +44,10 @@ uint8_t* createNumber(uint16_t number, uint8_t* numLen)
 		
 	uint8_t count = 5;
 	
+	for(uint8_t i = 0; i<20; i++) {
+		outputNumberArray[i] = 0x00;
+	}
+	
 	while(number>0) {
 	
 		uint16_t mod = number % 10;
