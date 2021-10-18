@@ -47,13 +47,13 @@ void movement_update(uint16_t map[], Stats_t *levelStats)
     if ((navswitch_push_event_p (NAVSWITCH_NORTH)) && is_legal_move(map, levelStats->X, levelStats->Y-1)) {
 		levelStats->Y --; // Change map NORTH
     }
-        if ((navswitch_push_event_p (NAVSWITCH_EAST)) && is_legal_move(map, levelStats->X+1, levelStats->Y)) {
+    if ((navswitch_push_event_p (NAVSWITCH_EAST)) && is_legal_move(map, levelStats->X+1, levelStats->Y)) {
             levelStats->X ++; // Change map EAST
-       }
-        if ((navswitch_push_event_p (NAVSWITCH_SOUTH)) && is_legal_move(map, levelStats->X, levelStats->Y+1)) {
-            levelStats->Y ++; // Change map SOUTH
-        }
-        if ((navswitch_push_event_p (NAVSWITCH_WEST)) && is_legal_move(map, levelStats->X-1, levelStats->Y)) {
-            levelStats->X --; // Change map WEST
-        }        
+    }
+    if ((navswitch_push_event_p (NAVSWITCH_SOUTH)) && is_legal_move(map, levelStats->X, levelStats->Y+1)) {
+        levelStats->Y ++; // Change map SOUTH
+    }
+    if ((navswitch_push_event_p (NAVSWITCH_WEST)) && is_legal_move(map, levelStats->X-1, levelStats->Y)) {
+        levelStats->X --; // Change map WEST
+    }        
 }
