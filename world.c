@@ -3,13 +3,15 @@
     @date   19 Oct 2021
     @brief  Contains all structures to be initialised for gameplay
 */
+
 #include "world.h"
 
-Stats_t level_init(uint16_t level[], uint16_t collectables[])
+
+Stats_t level_init (uint16_t level[], uint16_t collectables[])
 {
     // Initialise level statistics
     Stats_t levelStats;
-    for(uint8_t i = 0; i<20; i++) {
+    for (uint8_t i = 0; i<20; i++) {
         levelStats.level[i] = level[i];
     	levelStats.collectables[i] = collectables[i];
 	}
@@ -20,29 +22,29 @@ Stats_t level_init(uint16_t level[], uint16_t collectables[])
     return levelStats;
 }
 
-uint16_t* map_get(uint8_t level)
+uint16_t* map_get (uint8_t level)
 {
 	static uint16_t mapArray[20];
-		if(level == 1) {
+		if (level == 1) {
 			uint16_t map1Array[20] = {0xffff, 0x8421, 0x8001, 0x8421, 0xfeff, 0x8281, 0x8291, 0x8291, 0xbe11, 0x809f, 0xba81, 0x9281, 0x9281, 0x92df, 0x9281, 0x9e81, 0x8281, 0x8281, 0x8281, 0xffff};
-			for(uint8_t i = 0; i<20; i++) {
+			for (uint8_t i = 0; i<20; i++) {
 				mapArray[i] = map1Array[i];
 			}
-		} else if(level == 2) {
+		} else if (level == 2) {
 			uint16_t map2Array[20] = {0xffff, 0x8801, 0x8851, 0x8fd1, 0x8811, 0x8051, 0x8ffb, 0x8001, 0x8ffb, 0x8011, 0x8bd1, 0x8a11, 0x8a11, 0x8bd1, 0x8851, 0x8fd1, 0x8811, 0x8011, 0x8811, 0xffff};
-			for(uint8_t i = 0; i<20; i++) {
+			for (uint8_t i = 0; i<20; i++) {
 				mapArray[i] = map2Array[i];
 			}
-		} else if(level == 3) {
+		} else if (level == 3) {
 			uint16_t map3Array[20] = {0xffff, 0x8889, 0x8009, 0x8881, 0xd8ff, 0x8481, 0x823d, 0x8185, 0xddf5, 0x9025, 0x9025, 0x9fe5, 0x8205, 0xfbff, 0x8841, 0x8855, 0x8855, 0x8b5d, 0x8301, 0xffff};;
-			for(uint8_t i = 0; i<20; i++) {
+			for (uint8_t i = 0; i<20; i++) {
 				mapArray[i] = map3Array[i];
 			}
 		}
 	return mapArray;
 }
 
-Map_collectables_t collectables_init(void)
+Map_collectables_t collectables_init (void)
 {
 	uint16_t emptyArray[20] = {0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000};
 	uint16_t map1Array[20] = {0x0000, 0x0000, 0x0004, 0x0000, 0x0000, 0x0000, 0x0800, 0x0004, 0x0000, 0x0000, 0x0000, 0x0004, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0800, 0x0000, 0x0000};
@@ -50,7 +52,7 @@ Map_collectables_t collectables_init(void)
 	uint16_t map3Array[20] = {0x0000, 0x0002, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0800, 0x0000, 0x0102, 0x0000, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0000};
 	static Map_collectables_t collectables;
 	
-	for(uint8_t i = 0; i<20; i++) {
+	for (uint8_t i = 0; i<20; i++) {
 		(collectables.empty)[i] = emptyArray[i];
 		(collectables.map1)[i] = map1Array[i];
 		(collectables.map2)[i] = map2Array[i];

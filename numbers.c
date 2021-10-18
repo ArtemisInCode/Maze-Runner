@@ -9,15 +9,16 @@
 
 #define PACER_RATE 500
 
-void printNumbers(uint8_t number[], int8_t step)
+
+void printNumbers (uint8_t number[], int8_t step)
 {
 
-			for(uint8_t i = 0; i<5; i++) { // Write to each display columnn
-				pacer_wait(); // Allow for physical switching time
-				if(i+step > 19 || i+step < 0) { // While in array bounds print number columns, 0x00 otherwise
-					ledmat_display_column(0x00, i);
+			for (uint8_t i = 0; i<5; i++) { // Write to each display columnn
+				pacer_wait (); // Allow for physical switching time
+				if (i+step > 19 || i+step < 0) { // While in array bounds print number columns, 0x00 otherwise
+					ledmat_display_column (0x00, i);
 				} else {
-					ledmat_display_column(number[i+step], i);
+					ledmat_display_column (number[i+step], i);
 				}
 			}
 		
@@ -25,7 +26,7 @@ void printNumbers(uint8_t number[], int8_t step)
 
 }
 
-uint8_t* createNumber(uint16_t number, uint8_t* numLen)
+uint8_t* createNumber (uint16_t number, uint8_t* numLen)
 {
 	static uint8_t outputNumberArray[20];
 	
@@ -45,19 +46,19 @@ uint8_t* createNumber(uint16_t number, uint8_t* numLen)
 		
 	uint8_t count = 5; // Start position for scrolling
 	
-	for(uint8_t i = 0; i<20; i++) { // Clears output
+	for (uint8_t i = 0; i<20; i++) { // Clears output
 		outputNumberArray[i] = 0x00;
 	}
 	
 	/* Splits number into digits and creates display bitmap */
-	while(number>0) {
+	while (number>0) {
 	
 		uint16_t mod = number % 10; // Takes first digit of number
 		
-		count--;
+		count --;
 		/* Adds zero column to front and adds columns of digit */
 		outputNumberArray[count*4] = 0x00;
-		for(uint8_t i = ((count*4)+1); i<((count*4)+4); i++) {
+		for (uint8_t i = ((count*4)+1); i<((count*4)+4); i++) {
 			outputNumberArray[i] = numberArray[mod][(i-((count*4)+1))];
 		}
 		

@@ -35,6 +35,6 @@ Use the navswitch to run around the (16x20) maze and grab all the collectables (
 
 ## Authors
 
-Artemis Hingston - 83986198 - irh20@uclive.ac.nz
+Artemis Hingston    - 83986198  - irh20@uclive.ac.nz
 
-Robert Beck - 27223174 - rbe78@uclive.ac.nz
+Robert Beck         - 27223174  - rbe78@uclive.ac.nz

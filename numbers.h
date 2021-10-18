@@ -9,6 +9,7 @@
 
 #include <stdint.h>
 
+
 /* Prints to display at given position in given bitmap (number is uint8_t number[20]) */
 void printNumbers(uint8_t number[], int8_t step);
 
