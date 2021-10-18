@@ -4,9 +4,6 @@
     @brief  The main file for playing the UC4FK game
 */
 
-
-// Several of these are almost certainly redundant
-
 #include <avr/io.h>
 #include "ledmat.h"
 #include "system.h"
@@ -17,11 +14,18 @@
 #include "movement.h"
 #include "ledHeader.h"
 
-#define PACER_RATE 500
+#define PACER_RATE 500 //game loop frequency (Hz)
+#define NUMBER_STEP_START 13 //initial step position for single number
+/*number of cycles between runs*/
+#define MAP_TIMER_RATE 2
+#define MOVEMENT_TIMER_RATE 10
+#define COLLECTABLE_TIMER_RATE 50
+#define NUMBER_TIMER_RATE 50
 
 int main (void)
 {
-	
+
+	/*initilisation fucntions to setup game*/
 	header_init();
     system_init ();
     ledmat_init();
@@ -29,26 +33,27 @@ int main (void)
     map_collectables_t collectables = collectables_init();
     Stats_t stats = level_init(map_get(1), collectables.map1);
     
-    uint8_t level = 1;
+    uint8_t level = 1; //current game level
     uint8_t game_state = 0; //0-Running, 1-EndScreen, 2-Reset 3-Interlevel
     
-    uint8_t map_timer = 0;
-    uint8_t movement_timer = 0;
-    uint16_t collectable_timer = 0;
-    uint16_t number_timer = 0;
-    uint16_t timer = 0;
+	/*variables for counting cycles*/
+    uint8_t map_timer = 0; //for updating the map display
+    uint8_t movement_timer = 0; //for updating movement
+    uint16_t collectable_timer = 0; //for updating collectable flashing
+    uint16_t number_timer = 0; //for updating number scrolling
+    uint16_t timer = 0; //for incrementing the score
     
-    uint8_t numLen = 0;
-    int8_t step = 21;
-    uint8_t* numArray;
-    uint16_t score = 0;
-	uint16_t levelNumber = 1;
+    uint8_t numLen = 0; //length of string to print
+    int8_t step = 21; //current print scrolling position
+    uint8_t* numArray; //array of numbers to be printed
+    uint16_t score = 0; //final time
+	uint16_t levelNumber = 1; //game level for printing
 
     
     
 
-	//printText("1");
-	step = 13;
+	//prints text 1;
+	step = NUMBER_STEP_START; 
 	game_state = 3;
     while (1)
     {
@@ -68,14 +73,14 @@ int main (void)
 					case 2:
 						//printText("2");
 						levelNumber = 2;
-						step = 13;
+						step = NUMBER_STEP_START;
 						game_state = 3;
 						stats = level_init(map_get(2), collectables.map2);
 						break;
 					case 0:
 						//printText("3");
 						levelNumber = 3;
-						step = 13;
+						step = NUMBER_STEP_START;
 						game_state = 3;
 						stats = level_init(map_get(3), collectables.map3);
 						break;
@@ -85,11 +90,11 @@ int main (void)
 			}
 		
 			
-			if(map_timer >=2) {
-				if(collectable_timer < 50) {
+			if(map_timer >= MAP_TIMER_RATE) {
+				if(collectable_timer < COLLECTABLE_TIMER_RATE) {
 					update_map(stats.collectables, stats.level, stats.X, stats.Y);
 					map_timer = 0;
-				} else if(collectable_timer < 100) {
+				} else if(collectable_timer < (COLLECTABLE_TIMER_RATE*2))) {
 					update_map(collectables.empty, stats.level, stats.X, stats.Y);
 					map_timer = 0;
 				} else {
@@ -103,7 +108,7 @@ int main (void)
 			movement_timer ++;
 			collectable_timer ++;
 		
-			if(movement_timer >= 10) {
+			if(movement_timer >= MOVEMENT_TIMER_RATE) {
 				movement_update(stats.level, &stats);
 				collectable_pickup(&stats, stats.collectables);
 				header_set(stats.remainingCollectables);
@@ -123,7 +128,7 @@ int main (void)
 
 			numArray = createNumber(score, &numLen);
 			
-			if(number_timer >= 50) {
+			if(number_timer >= NUMBER_TIMER_RATE) {
 				step ++;
 				number_timer = 0;
 			}
@@ -141,14 +146,13 @@ int main (void)
 			break;
 		
 		case 2: //Reset
-		
+			/*reverts game state to restart game*/
 			stats = level_init(map_get(1), collectables.map1);
 			level = 1;
 			score = 0;
     		timer = 0;
-    		step = 21;
     		levelNumber = 1;
-    		step = 13;
+    		step = NUMBER_STEP_START;
 			game_state = 3;
 			
 			break;
@@ -157,7 +161,7 @@ int main (void)
 			
 			numArray = createNumber(levelNumber, &numLen);
 			
-			if(number_timer >= 50) {
+			if(number_timer >= NUMBER_TIMER_RATE) {
 				step ++;
 				number_timer = 0;
 			}
