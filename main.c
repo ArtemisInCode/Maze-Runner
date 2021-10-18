@@ -63,7 +63,7 @@ int main (void)
 
     	pacer_wait();
 
-		/* Game state switchg */
+		/* Game state switching */
     	switch(game_state) {
     	
     	case 0: // Running
