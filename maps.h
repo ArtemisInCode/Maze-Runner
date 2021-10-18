@@ -31,7 +31,6 @@ typedef struct {
     uint16_t X; // Player X ordinate
     uint16_t Y; // Player Y ordinate
     uint8_t remainingCollectables; // Collectables yet to ne obtained
-
 } Stats_t;
 
 
