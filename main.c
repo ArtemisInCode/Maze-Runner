@@ -15,7 +15,7 @@
 #include "navswitch.h"
 #include "numbers.h"
 #include "movement.h"
-#include "ledheader.h"
+#include "ledHeader.h"
 
 #define PACER_RATE 500
 
