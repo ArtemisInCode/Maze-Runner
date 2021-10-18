@@ -94,7 +94,7 @@ int main (void)
 				if(collectable_timer < COLLECTABLE_TIMER_RATE) {
 					update_map(stats.collectables, stats.level, stats.X, stats.Y);
 					map_timer = 0;
-				} else if(collectable_timer < (COLLECTABLE_TIMER_RATE*2))) {
+				} else if(collectable_timer < (COLLECTABLE_TIMER_RATE*2)) {
 					update_map(collectables.empty, stats.level, stats.X, stats.Y);
 					map_timer = 0;
 				} else {
