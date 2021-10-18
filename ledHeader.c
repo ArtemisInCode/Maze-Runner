@@ -6,14 +6,14 @@
 
 #include "ledHeader.h"
 
-void header_init(void) // Initilises header for leds
+void header_init(void)
 {
 	for(uint8_t i = 1; i<7; i++) {
 		DDRD |= (1<<i);
 	}
 }
 
-void header_set(uint8_t amount) //Sets number of leds on
+void header_set(uint8_t amount)
 {
 	if(amount < 7) {
 		for(uint8_t i = 1; i<7; i++) {
