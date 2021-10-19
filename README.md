@@ -31,7 +31,7 @@ The cathode of each LED is connected to ground (top pin on header).
 
 ## Playing the game
 
-Use the navswitch to run around the (16x20) maze and grab all the collectables (flashing dots) in the maze as fast as you can. There are three levels, and five collectables in each level. Try and get the fastest time (NOTE: time is in deciseconds (seconds*10)). To replay the game, press the navswitch. You can reset the game using the 'reset' button (S2), and then start it again by holding the button (S3) and pressing the 'reset' (S2) button.
+Use the navswitch to run around the (16x20) maze and grab all the collectables (flashing dots) in the maze as fast as you can. The number of collectables yet to be obtained in a level are indicated by the external LEDs (if connected). There are three levels, and five collectables in each level. Try and get the fastest time (NOTE: time is in deciseconds (seconds*10)). To replay the game, press the navswitch. You can reset the game using the 'reset' button (S2), and then start it again by holding the button (S3) and pressing the 'reset' (S2) button.
 
 ## Authors
 
