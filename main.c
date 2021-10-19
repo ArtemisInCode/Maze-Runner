@@ -35,7 +35,7 @@ int main (void)
     ledmat_init ();
     pacer_init (PACER_RATE);;
     Map_collectables_t collectables = collectables_init (); // Collectable maps
-    Stats_t stats = level_init (map_get(1), collectables.map1); // Level statistics
+    Stats_t stats = level_init (map_get (1), collectables.map1); // Level statistics
     
 	uint8_t level = 1; // Current game level
     uint8_t game_state = 0; // 0-Running, 1-EndScreen, 2-Reset, 3-Interlevel
