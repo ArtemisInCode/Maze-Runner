@@ -48,11 +48,11 @@ int main (void)
     uint16_t timer = 0; // For incrementing the score
     
 	/* For number scrolling */
-    uint8_t numLen = 0; // Length of string to print
+    uint8_t num_len = 0; // Length of string to print
     int8_t step = MAX_NUMBER_LENGTH + 1; // Current print scrolling position
-    uint8_t* numArray; // Array of numbers to be printed
+    uint8_t* num_array; // Array of numbers to be printed
     uint16_t score = 0; // Final time
-	uint16_t levelNumber = 1; // Game level for printing
+	uint16_t level_number = 1; // Game level for printing
     
 	/* Prints text 1 */
 	step = NUMBER_STEP_START; 
@@ -74,17 +74,17 @@ int main (void)
 				switch (level) {
 					case 1: // Reset game
 						game_state = 1;
-						levelNumber = 1;
+						level_number = 1;
 						stats = level_init (map_get (1), collectables.map1);
 						break;
 					case 2: // Move to level 2
-						levelNumber = 2;
+						level_number = 2;
 						step = NUMBER_STEP_START;
 						game_state = 3;
 						stats = level_init (map_get (2), collectables.map2);
 						break;
 					case 0: // Move to level 3
-						levelNumber = 3;
+						level_number = 3;
 						step = NUMBER_STEP_START;
 						game_state = 3;
 						stats = level_init (map_get (3), collectables.map3);
@@ -130,17 +130,17 @@ int main (void)
 			break;
 		
 		case 1: // EndScreen
-			numArray = createNumber (score, &numLen); // Generates bitmap for displaying score
+			num_array = create_number (score, &num_len); // Generates bitmap for displaying score
 			
 			if (number_timer >= NUMBER_TIMER_RATE) { // Scrolls score
 				step ++;
 				number_timer = 0;
 			}
 			if (step >= (MAX_NUMBER_LENGTH + 1)) { // Resets scrolling
-				step = MAX_NUMBER_LENGTH - (numLen*4) - 3;
+				step = MAX_NUMBER_LENGTH - (num_len*4) - 3;
 			}
 	 
-			printNumbers (numArray, step); // Displays score
+			print_numbers (num_array, step); // Displays score
 			number_timer ++;
 			
 			navswitch_update ();
@@ -155,7 +155,7 @@ int main (void)
 			level = 1;
 			score = 0;
     		timer = 0;
-    		levelNumber = 1;
+    		level_number = 1;
     		step = NUMBER_STEP_START;
 			game_state = 3;
 			
@@ -163,7 +163,7 @@ int main (void)
 		
 		case 3: // Interlevel			
 			
-			numArray = createNumber (levelNumber, &numLen); // Generates bitmap to display level number
+			num_array = create_number (level_number, &num_len); // Generates bitmap to display level number
 			
 			if (number_timer >= NUMBER_TIMER_RATE) { // Scrolls level number
 				step ++;
@@ -173,7 +173,7 @@ int main (void)
 				game_state = 0;
 			}
 	 
-			printNumbers (numArray, step); // Displays level number
+			print_numbers (num_array, step); // Displays level number
 			number_timer ++;
 			
 			break;	
