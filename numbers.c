@@ -9,7 +9,7 @@
 #define PACER_RATE 500
 
 
-void printNumbers (uint8_t number[], int8_t step)
+void print_numbers (uint8_t number[], int8_t step)
 {
 	for (uint8_t i = 0; i<5; i++) { // Write to each display columnn
 		pacer_wait (); // Allow for physical switching time
@@ -21,7 +21,7 @@ void printNumbers (uint8_t number[], int8_t step)
 	}
 }
 
-uint8_t* createNumber (uint16_t number, uint8_t* numLen)
+uint8_t* create_number (uint16_t number, uint8_t* numLen)
 {
 	static uint8_t outputNumberArray[20];
 	
